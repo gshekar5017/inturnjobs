@@ -1,0 +1,56 @@
+Students:
+id, email, password
+profiles:
+id, name, additional details, resume, student_id:integer
+student.rb
+has_one :profile
+
+profile.rb
+set_table_name 'user_profile'
+belongs_to :student
+
+employees:
+id, email, password
+
+
+jobs:
+id, job_title, job_description, details.., employer_id: integer
+
+employee.rb
+has_many :jobs
+
+job.rb
+belongs_to :employee
+
+job_applications:
+id, student_id, job_id
+
+student.rb
+has_many :job_applications
+
+job.rb:
+has_many :job_applications
+
+job_application.eb
+belongs_to :student
+belongs_to :job
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

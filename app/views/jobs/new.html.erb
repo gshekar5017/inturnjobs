@@ -1,0 +1,31 @@
+<h1>create new jobs</h1><h1>Post a new job</h1>
+
+<%= form_for :job, url: jobs_path  do |f| %>
+
+<p>
+    <%= f.label :Job_Title %>
+    <%= f.text_field :job_title %>
+</p><br />
+<p>
+    <%= f.label :Job_Description %>
+    <%= f.text_area :job_description %>
+</p><br />
+
+<p>
+    <%= f.label :Job_Type %>
+    <%= f.select :job_type, ['Research Assistant','Graduate Assistant','Teaching assistant'] %>
+</p><br />
+<p>
+   <%= f.label :salary %>
+   <%= f.select :salary, ['per hour','per day'] %><br />
+
+</p><br />
+<p>
+ <%= f.label :City_or_state%>
+    <%= f.select :city, us_states %>
+</p>
+<p>
+ <%= f.submit " Posta job" %>
+</p>
+
+<% end %>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inturnjobs</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script
+			  src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js"
+			  integrity="sha256-6HSLgn6Ao3PKc5ci8rwZfb//5QUu3ge2/Sw9KfLuvr8="
+			  crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="student-login", style="float: right; font-size:20px">
+    
+   <% if student_signed_in? %>
+    Signed in as <%= current_student.email %>. Not YOu?
+   <%= link_to "Sign Out", destroy_student_session_path, :method => :delete %>
+    <% else %>
+       <% if !employer_signed_in? %>
+           <h2>Student Login</h2>
+           <%= link_to "Student Sign up", new_student_registration_path %> or
+           <%= link_to "Student Sign in", new_student_session_path %>
+        <% end %> 
+  <% end %>
+  </div>
+
+  <div id="employer-login", style="float: right;font-size:20px">
+       
+      <% if employer_signed_in? %>
+          Signed in as <%= current_employer.email %>. Not YOu?
+         <%= link_to "Sign Out", destroy_employer_session_path, :method => :delete %>
+      <% else %>
+          <% if !student_signed_in? %>
+            <h2>Employer Login</h2>
+             <%= link_to "Employer Sign up", new_employer_registration_path %> or
+             <%= link_to "Employer Sign in", new_employer_session_path %>
+          <% end %>
+      <% end %>
+</div>
+  <div>
+    <%= yield %>
+</div>
+</body>
+</html>

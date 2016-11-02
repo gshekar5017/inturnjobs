@@ -1,0 +1,136 @@
+
+<h1>Create new Profile</h1>
+
+<%= form_for :profile, url: profiles_path do |f| %>
+
+
+
+<p>
+    <%= f.label :profilename %>
+    <%= f.text_field :profilename%>
+  </p>
+<strong>Contact Details</strong>
+<p>
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname %>
+  </p>
+<p>
+    <%= f.label :lastname %>
+    <%= f.text_field :lastname %>
+  </p>
+
+<p>
+    <%= f.label :mobile_no%>
+    <%= f.phone_field :mobile_no %>
+  </p>
+<p>
+    <%= f.label :linked_in_url %>
+    <%= f.url_field :linked_in_url %>
+  </p>
+<p>
+    <%= f.label :current_location%>
+    <%= f.select :current_location, us_states %>
+
+
+<strong>Current Profession Details</strong>
+<p>
+    <%= f.label :total_work_experience %>
+    <%= f.text_field :total_work_experience %><br>
+    Do you have Experience? Yes:<input type="radio" id="have_experience" name="employment" value="yes" onclick="$('#employment_details').show();" /> No:<input type="radio" id="dont_have_experience" value="no" name="employment" onclick="$('#employment_details').hide();"/>
+
+    <div id="employment_details" style="display:none;border:0.2px solid grey">
+      <strong>Employment Details</strong>
+      <input type="button" id="add_new_experience" value="Add New Experience"></button>
+      <table id="employment_details_table">
+        <thead>
+          <th> Organization </th>
+          <th> Start Date </th>
+          <th> End Date </th>
+          <th> Designation </th>
+          <th> Technologies Used </th>
+          <th> Notes </th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" name="Organization"/>
+            </td>
+            <td>
+              <input type="text" name="start_date"/>
+            </td>
+            <td>
+              <input type="text" name="end_date"/>
+            </td>
+            <td>
+              <input type="text" name="designation"/>
+            </td>
+            <td>
+              <input type="textarea" name="notes"/>
+            </td>
+            <td>
+               <button id="closeButton">close</button>
+             </td>
+          </tr>
+        </tbody>
+</table>
+</div>
+   <!-- <%= f.radio_button :total_work_experience, 'current emplyer', :checked => true %> Currrent employer
+    <%= f.radio_button :total_work_experience, 'previous employer' %> Previous employer
+    <%= f.radio_button :total_work_experience, 'other employer' %> other employer
+-->
+<p>
+  <%= f.label :current_industry %>
+  <%= f.select :current_industry, a_industries %>
+ </p>
+
+<p>
+    <%= f.label :key_skills %>
+    <%= f.text_field :key_skills %>
+  </p>
+<p>
+    <%= f.label :resume_headline%>
+    <%= f.text_field :resume_headline%>
+  </p>
+
+<strong>Education Details</strong>
+<p>
+  <%= f.label :basic_Graduation %>
+  <%= f.select :basic_graduation, ['it industry','electrical engineering']%>
+ </p>
+<p>
+  <%= f.label :post_Graduation %>
+  <%= f.select :post_graduation, ['it industry','electrical engineering']%>
+ </p>
+<p>
+  <%= f.label :doctorate_PhD %>
+  <%= f.select :doctorate_phd, ['it industry','electrical engineering']%>
+ </p>
+<strong>Certification If Any</strong>
+<p>
+    <%= f.label :certification1%>
+    <%= f.text_field :certification1%>
+  </p>
+<p>
+    <%= f.label :certification2%>
+    <%= f.text_field :certification2 %>
+  </p>
+<p>
+  <%=f.label :Add_Resume %>
+  <%= f.file_field :add_resume%>
+ </p>
+
+<p>
+  <%= f.submit %>
+ </p>
+
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+     $("#profile_total_work_experience").datepicker();
+      $("#add_new_experience").click(function(){
+
+        $("#employment_details_table tbody").append('<input type="text" name="Organization"/></td> <td><input type="text" name="start_date"/></td><td><input type="text" name="end_date"/></td><td><input type="text" name="designation"/></td><td><input type="textarea" name="notes"/></td></tr>');
+      });
+  });
+</script>

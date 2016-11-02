@@ -1,0 +1,27 @@
+<h1>Create new  Employer Profile</h1>
+
+<%= form_for :post, url: posts_path do |f| %>
+
+
+
+<p>
+    <%= f.label :profilename %>
+    <%= f.text_field :profilename, placeholder: 'profilename' %>
+  </p>
+
+<p>
+    <%= f.label :designation %>
+    <%= f.text_field :designation, placeholder: ' prof, asst prof etc' %>
+  </p>
+<p>
+    <%= f.label :department %>
+    <%= f.text_field :department, placeholder: 'IT, CSE' %>
+  </p>
+<p>
+    <%= f.label :university %>
+    <%= f.text_field :university, placeholder: 'NPU, Virginia'%>
+  </p>
+<p>
+  <%= f.submit "save profile"%>
+  </p>
+<% end %>
